@@ -41,22 +41,22 @@ def get_all_word_abstraction_sets(non_metaphor_sets):
             for word in non_metaphor_words:
                 abs_value = get_abstraction_value_for_word(word, conn)
                 pair = WordAbstractionValuePair(word, abs_value)
-                print "Paired! {0}: {1}".format(pair.word, pair.abstraction_value)
+                print("Paired! {0}: {1}".format(pair.word, pair.abstraction_value))
                 if pair.abstraction_value == -1.0:
                     not_found.append(pair)
                 word_abstraction_set.append(pair)
             list_of_word_abstraction_sets.append(word_abstraction_set)
 
-    print "Didn't find {0} words!".format(len(not_found))
+    print("Didn't find {0} words!".format(len(not_found)))
     for pair in not_found:
-        print pair.word
+        print(pair.word)
     return list_of_word_abstraction_sets
 
 
 def dump_to_json(list_of_word_abstraction_sets):
     with open(EVALUATIONS_JSON, 'w') as evaluations:
         json.dump(list_of_word_abstraction_sets, evaluations)
-        print "Output file is in " + os.path.abspath(EVALUATIONS_JSON)
+        print("Output file is in " + os.path.abspath(EVALUATIONS_JSON))
 
 
 def pretty_dump_to_txt(list_of_word_abstraction_sets):
