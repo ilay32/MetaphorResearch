@@ -34,7 +34,8 @@ def get_non_metaphor_sets():
 def get_all_word_abstraction_sets(non_metaphor_sets):
     list_of_word_abstraction_sets = []
     not_found = []
-    with ServerConnection("sqlsrv.cs.bgu.ac.il", "noamant", "1qa@WS") as conn:
+    userspecs = json.load(open('user.spec'));
+    with ServerConnection(userspec) as conn:
         for non_metaphor_set in non_metaphor_sets:
             word_abstraction_set = []
             non_metaphor_words = non_metaphor_set.rsplit()

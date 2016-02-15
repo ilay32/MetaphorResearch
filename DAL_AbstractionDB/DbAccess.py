@@ -9,10 +9,10 @@ class ServerConnection(object):
     def __exit__(self, exc_type, exc_val, exc_tb):
         self.conn.close()
 
-    def __init__(self, server_name, user, password):
-        self.server_name = server_name
-        self.user = user
-        self.password = password
+    def __init__(self, specs):
+        self.server_name = specs['server']
+        self.user = specs['user']
+        self.password = specs['pass']
 
 
 
